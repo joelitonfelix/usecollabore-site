@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Collabore — Portal corporativo e atendimento por WhatsApp</title>
+<meta name="description" content="Collabore é um portal corporativo para empresas do varejo: tarefas, comunicação interna e atendimento a clientes por WhatsApp e Instagram pela API oficial da Meta. Fornecido por LTM Confecções e Móveis Ltda.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --noite:#0F1A3A; --noite-2:#0A132C; --marca:#2F5BEA; --marca-esc:#2348C4; --marca-claro:#7894FF;
+    --acento:#FFB020; --fundo:#F4F6FB; --sup:#FFFFFF; --linha:#DFE4F0; --txt:#10182F; --txt-2:#3C4764; --txt-3:#606B89;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--txt);background:var(--fundo);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--marca-esc)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  h1,h2,h3{font-family:'Plus Jakarta Sans','Inter',sans-serif;letter-spacing:-0.02em}
+
+  header{background:var(--noite);color:#fff}
+  .topo{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .marca{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:22px;letter-spacing:-0.02em}
+  .marca svg{width:30px;height:30px}
+  nav a{color:#C9D3F0;text-decoration:none;font-size:14px;margin-left:22px}
+  nav a:hover{color:#fff}
+
+  .hero{padding-top:72px;padding-bottom:88px}
+  .hero h1{font-size:clamp(32px,5vw,50px);line-height:1.12;font-weight:800;max-width:780px}
+  .hero h1 em{font-style:normal;color:var(--marca-claro)}
+  .hero p{color:#C9D3F0;font-size:18px;max-width:660px;margin-top:20px}
+  .botoes{margin-top:32px;display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:13px 22px;border-radius:10px;font-weight:600;font-size:15px;text-decoration:none}
+  .btn-1{background:var(--acento);color:#1A1405}
+  .btn-2{border:1px solid #3A4A7A;color:#fff}
+
+  section{padding:72px 0}
+  .rotulo{font-size:13px;font-weight:600;color:var(--marca-esc);text-transform:uppercase;letter-spacing:.08em}
+  h2{font-size:clamp(26px,3.6vw,34px);font-weight:800;margin-top:8px;max-width:740px;line-height:1.2}
+  .lead{color:var(--txt-2);font-size:17px;max-width:740px;margin-top:14px}
+
+  .grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:36px}
+  .card{background:var(--sup);border:1px solid var(--linha);border-radius:14px;padding:22px}
+  .card h3{font-size:17px;font-weight:700;margin-bottom:6px}
+  .card p{color:var(--txt-2);font-size:15px}
+  .ico{width:38px;height:38px;border-radius:10px;background:#EDF2FF;display:grid;place-items:center;margin-bottom:14px}
+  .ico svg{width:20px;height:20px;stroke:var(--marca);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+  .faixa{background:var(--sup);border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+  .passos{counter-reset:p;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:36px}
+  .passo{position:relative;padding:22px 22px 22px 66px;border:1px solid var(--linha);border-radius:14px;background:var(--fundo)}
+  .passo::before{counter-increment:p;content:counter(p);position:absolute;left:20px;top:20px;width:32px;height:32px;border-radius:50%;background:var(--marca);color:#fff;font-weight:700;display:grid;place-items:center;font-size:15px}
+  .passo h3{font-size:16px;font-weight:700;margin-bottom:4px}
+  .passo p{color:var(--txt-2);font-size:15px}
+
+  ul.lista{margin-top:24px;list-style:none;display:grid;gap:12px;max-width:760px}
+  ul.lista li{padding-left:30px;position:relative;color:var(--txt-2)}
+  ul.lista li::before{content:"";position:absolute;left:0;top:7px;width:16px;height:16px;border-radius:50%;background:#E8F6EE;border:2px solid #15803D}
+
+  .empresa{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:32px}
+  .empresa .card strong{display:block;font-size:13px;color:var(--txt-3);font-weight:500;margin-bottom:4px}
+  .empresa .card div{font-size:16px;font-weight:500}
+
+  footer{background:var(--noite-2);color:#A7B4D8;font-size:14px;padding:36px 0}
+  footer .linhas{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  footer strong{color:#fff;font-weight:600}
+  footer p{margin-top:4px}
+  footer a{color:#C9D3F0}
+
+  @media (max-width:640px){
+    nav{display:none}
+    .hero{padding-top:48px;padding-bottom:64px}
+    section{padding:52px 0}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap topo">
+    <a class="marca" href="#" aria-label="Collabore">
+      <svg viewBox="7.40 7.00 34 34" aria-hidden="true"><path d="M31.86 13.35 A13 13 0 1 0 31.86 34.65" fill="none" stroke="#7894FF" stroke-width="8" stroke-linecap="round"/><circle cx="36.4" cy="24" r="4.3" fill="#FFB020"/></svg>
+      collabore
+    </a>
+    <nav aria-label="Seções">
+      <a href="#recursos">Recursos</a>
+      <a href="#whatsapp">WhatsApp</a>
+      <a href="#privacidade">Privacidade</a>
+      <a href="#empresa">Quem fornece</a>
+    </nav>
+  </div>
+
+  <div class="wrap hero">
+    <h1>O portal da sua empresa, com o <em>atendimento por WhatsApp</em> no mesmo lugar.</h1>
+    <p>O Collabore reúne tarefas, comunicação interna e o atendimento aos clientes por WhatsApp e Instagram. Cada empresa conecta o próprio número pela API oficial da Meta e distribui as conversas entre a sua equipe.</p>
+    <div class="botoes">
+      <a class="btn btn-1" href="#whatsapp">Como funciona o WhatsApp</a>
+      <a class="btn btn-2" href="#empresa">Quem fornece o Collabore</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="recursos">
+    <div class="wrap">
+      <div class="rotulo">Recursos</div>
+      <h2>Feito para o dia a dia de empresas do varejo.</h2>
+      <p class="lead">Um único portal, em português, para a equipe trabalhar junta e atender bem quem compra.</p>
+
+      <div class="grade">
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2h9"/></svg></div>
+          <h3>Tarefas e projetos</h3>
+          <p>Prazos, responsáveis, checklists e lembretes para a equipe inteira.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/></svg></div>
+          <h3>Comunicação interna</h3>
+          <p>Feed de notícias com confirmação de leitura e mensagens entre colaboradores.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 01-13.5 7.8L3 21l1.2-4.5A9 9 0 1121 12z"/></svg></div>
+          <h3>Atendimento por WhatsApp e Instagram</h3>
+          <p>Uma caixa de entrada compartilhada: as conversas chegam ao portal e são distribuídas entre os atendentes.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+          <h3>CRM e relatórios</h3>
+          <p>Funil de vendas, atividades com aviso e indicadores de atendimento por canal e por atendente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="whatsapp" class="faixa">
+    <div class="wrap">
+      <div class="rotulo">WhatsApp Business</div>
+      <h2>Cada empresa usa o próprio número, pela API oficial da Meta.</h2>
+      <p class="lead">O Collabore é uma plataforma que atende várias empresas. Cada uma conecta a sua conta do WhatsApp Business e mantém o controle do número, do nome exibido e da cobrança.</p>
+
+      <div class="passos">
+        <div class="passo">
+          <h3>A empresa conecta o número</h3>
+          <p>O administrador autoriza o Collabore a acessar a conta do WhatsApp Business da própria empresa, pela janela oficial da Meta.</p>
+        </div>
+        <div class="passo">
+          <h3>As mensagens chegam ao portal</h3>
+          <p>O que os clientes enviam para o número da empresa aparece no Collabore e é distribuído entre os atendentes dela.</p>
+        </div>
+        <div class="passo">
+          <h3>A equipe responde</h3>
+          <p>O atendente responde pelo portal e a mensagem sai do número da própria empresa. Fora da janela de 24 horas, só modelos aprovados pela Meta.</p>
+        </div>
+        <div class="passo">
+          <h3>Modelos de mensagem</h3>
+          <p>A empresa cria e acompanha os seus modelos (confirmação de pedido, aviso de retirada) e os envia para aprovação da Meta pelo próprio portal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="privacidade">
+    <div class="wrap">
+      <div class="rotulo">Privacidade e segurança</div>
+      <h2>Os dados de cada empresa ficam com ela.</h2>
+      <ul class="lista">
+        <li>Os dados de cada empresa cliente são separados e só a equipe daquela empresa tem acesso às suas conversas.</li>
+        <li>Os dados recebidos da Meta são usados apenas para prestar o atendimento em nome da empresa: não são vendidos nem usados para publicidade.</li>
+        <li>As credenciais de acesso de cada conta são guardadas de forma cifrada.</li>
+        <li>Tratamento de dados conforme a LGPD, com canal próprio para os titulares: <a href="mailto:privacidade@sanremobaby.com.br">privacidade@sanremobaby.com.br</a>.</li>
+      </ul>
+      <p class="lead" style="margin-top:24px">Leia a <a href="https://portal-vertex-staging.up.railway.app/?ir=politicaDePrivacidade">Política de Privacidade</a> e os <a href="https://portal-vertex-staging.up.railway.app/?ir=termosDeUso">Termos de Uso</a> do Collabore.</p>
+    </div>
+  </section>
+
+  <section id="empresa" class="faixa">
+    <div class="wrap">
+      <div class="rotulo">Quem fornece</div>
+      <h2>O Collabore é desenvolvido e operado pela LTM Confecções e Móveis Ltda.</h2>
+      <p class="lead">Empresa de Campina Grande (PB), dona da marca San Remo Baby, que desenvolve o Collabore e o oferece a empresas do varejo, entre elas as lojas do seu grupo econômico e parceiros.</p>
+      <div class="empresa">
+        <div class="card">
+          <strong>Razão social</strong>
+          <div>LTM CONFECÇÕES E MÓVEIS LTDA<br>CNPJ 09.381.258/0001-50</div>
+        </div>
+        <div class="card">
+          <strong>Endereço</strong>
+          <div>Rua Otacílio Nepomuceno, 740<br>Catolé — Campina Grande/PB<br>CEP 58410-160</div>
+        </div>
+        <div class="card">
+          <strong>Contato</strong>
+          <div><a href="mailto:privacidade@sanremobaby.com.br">privacidade@sanremobaby.com.br</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap linhas">
+    <div>
+      <strong>Collabore</strong>
+      <p>Um produto de LTM CONFECÇÕES E MÓVEIS LTDA · CNPJ 09.381.258/0001-50</p>
+      <p>Rua Otacílio Nepomuceno, 740 · Catolé · Campina Grande/PB · CEP 58410-160</p>
+    </div>
+    <div>
+      <p><a href="https://portal-vertex-staging.up.railway.app/?ir=politicaDePrivacidade">Política de Privacidade</a> · <a href="https://portal-vertex-staging.up.railway.app/?ir=termosDeUso">Termos de Uso</a></p>
+      <p>© 2026 Collabore. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
